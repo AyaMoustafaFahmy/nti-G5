@@ -15,8 +15,8 @@
         </button>
     </section>
     <form id="addCustomer" class="my-3 p-3 border border-3 rounded border-info d-none">
-        <input placeholder="name" class="form-control my-3">
-        <input placeholder="balance" class="form-control my-3">
+        <input placeholder="name" class="form-control my-3" name="name">
+        <input placeholder="balance" class="form-control my-3" name="balance">
         <button class="btn btn-success">add customer</button >
     </form>
     <table class="table table-bordered text-center">
@@ -26,18 +26,7 @@
             <th>balance</th>
             <th>actions</th>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>marwa</td>
-                <td>1000</td>
-                <td>
-                    <button class="btn btn-danger m-1">delete</button>
-                    <button class="btn btn-info m-1">withdraw</button>
-                    <button class="btn btn-primary m-1">add balance</button>
-                    <button class="btn btn-success m-1">edit</button>
-                </td>
-            </tr>
+        <tbody id="customersTable">
         </tbody>
     </table>
     <script src="custom2.js"></script>
