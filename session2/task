@@ -1,0 +1,5 @@
+student system
+- add student => name, class, age, degree
+- table ===> grade 90,100 A  80,90 B 80,70 c 70,60=>d , f
+delete student
+edit student degree
