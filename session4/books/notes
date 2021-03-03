@@ -5,3 +5,10 @@ npm i yargs chalk
 app.js=>build yargs
 myFunctions ==> add function & export
 app.js ==> call add from myMethods
+
+
+customer => id, name, balance
+add customer
+show customer data
+add balance
+delete customer

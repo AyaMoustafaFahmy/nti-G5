@@ -23,19 +23,28 @@ yargs.command({
 yargs.command({
     command:'showAll',
     handler:function(){
-        console.log('all')
+        myMethods.showAll()
     }
 })
 yargs.command({
     command:'delBook',
-    handler:function(){
-        console.log('delete')
+    builder: {
+        title:{type:'string', demandOption:true}
+    },
+    handler:function(argv){
+        myMethods.deleteBook(argv.title)
     }
 })
 yargs.command({
     command:'editBook',
-    handler:function(){
-        console.log('edit')
+    builder:{
+        title:{type:'string', demandOption:true},
+        author:{type:'string', demandOption:true},
+        searchKey:{type:'string', demandOption:true}
+    },
+    handler:function(argv){
+        let book = {title:argv.title, author:argv.author}
+        myMethods.editBook(argv.searchKey, book)
     }
 })
 
