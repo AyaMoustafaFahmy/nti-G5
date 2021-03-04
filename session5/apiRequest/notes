@@ -1,0 +1,7 @@
+npm i request
+
+
+task:
+use yargs to read 2 api's from https://jsonplaceholder.typicode.com/
+complete yargs customer task
+on the tasks project add yarg to change status
