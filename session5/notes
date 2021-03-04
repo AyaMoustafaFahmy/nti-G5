@@ -1,0 +1,12 @@
+- todolist
+--> add new task ==> title, content, status=false, check title is unique ==> done
+--> remove task => task title => not found or del task => done
+--> edit task status => task title => edit not  => done
+=> show All Tasks => all Tasks =>done
+=> show single task => task title and get data =>done
+
+//commands
+npm i nodemon --save-dev
+npm i env-cmd
+edit inside pakage.json on scripts 
+=> run => npm run dev
