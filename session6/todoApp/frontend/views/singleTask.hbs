@@ -1,4 +1,14 @@
 {{>header}}
 {{>navbar}}
-single
+<section class="container my-3">
+{{#if task.title}}
+    <h2>{{task.title}}</h2>
+    <p>{{task.body}}</p>
+{{else}}
+<div class="alert alert-danger">
+    invalid task id
+</div>
+{{/if}}
+</section>
+
 {{>footer}}
