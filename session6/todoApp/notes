@@ -4,3 +4,8 @@ localhost => welcome page
 localhost/alltasks
 localhost/alltasks/1 => id =1
 404 => page not found
+
+
+add customer
+show all customers
+delete customer
