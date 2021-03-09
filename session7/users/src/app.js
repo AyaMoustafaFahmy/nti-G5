@@ -41,6 +41,9 @@ app.get('/showAll', (req,res)=>{
 
 app.get('/showAll/:id',(req,res)=>{
     id = req.params.id
+    myMethods.showSingle(id, (err,data)=>{
+        res.render('single', {data})
+    })
 })
 
 app.get('/deleteUser/:id', (req,res)=>{

@@ -27,7 +27,14 @@ const showAll = (cb) =>{
     
 }
 //show single user
-
+const showSingle = (id, cb)=>{
+    dbConnection(db=>{
+        db.collection('user').findOne({_id: new ObjectID(id)}, (err,res)=>{
+            if(err) cb('error', false)
+            else cb(false, res)
+        })
+    })
+}
 //delete user
 const deleteUser= (userId)=>{
     dbConnection(db=>{
@@ -36,5 +43,4 @@ const deleteUser= (userId)=>{
 }
 //edit user
 
-
-module.exports = {addUser, showAll, deleteUser}
+module.exports = {addUser, showAll, deleteUser, showSingle}
