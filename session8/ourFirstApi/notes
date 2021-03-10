@@ -1,19 +1,17 @@
 Apis - user
-register user 
+register user => done 
 edit user
-show all users
-show single user
+show all users => done
+show single user => done
 delete user
 
-user:
-name
-age
-email
-password
-Dob
-address[]=> { flat number, building number, street name, city, country, type}
-phone
+- src
+==> index.js
+- models ==> user.route.js
+- dbconnection ==> con.js
+- routes => user.route.js
 
-- models 
-- running
-- dbconnection
+book => title, numOfPages, author, categories [ { category: { name } } ]
+add new book
+get all books
+get single book

@@ -28,6 +28,7 @@ const User = mongoose.model('User',{
         type:String,
         required:true,
         trim:true,
+        // match:/^([a-zA-Z0-9@*#]{8,15})$/,
         validate(value){
             if(value.includes('123')) throw new Error('invalid pass')
         }
