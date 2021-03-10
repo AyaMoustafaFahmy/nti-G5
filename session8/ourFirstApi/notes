@@ -1,0 +1,19 @@
+Apis - user
+register user 
+edit user
+show all users
+show single user
+delete user
+
+user:
+name
+age
+email
+password
+Dob
+address[]=> { flat number, building number, street name, city, country, type}
+phone
+
+- models 
+- running
+- dbconnection
