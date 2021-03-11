@@ -1,0 +1,10 @@
+const express = require('express')
+require('./db/connection')
+const userRoutes = require('./routes/user.route')
+const bookRoutes = require('./routes/book.route')
+
+const app = express()
+app.use(express.json())
+app.use(userRoutes)
+app.use(bookRoutes)
+app.listen(3000)

@@ -1,0 +1,19 @@
+user => name, email, password, age
+book=> userid, book name, book content
+
+register user ==> password encrypted
+login 
+authenticate
+edit my data 
+show profile
+deactivate account
+logout
+logout all devices
+
+add user book
+show all my books
+show single
+delete from my books
+
+npm i
+===> express mongoose validator
