@@ -34,6 +34,7 @@ const userSchema = mongoose.Schema({
         default:false
     }
 })
+//encrypt pass
 userSchema.pre('save', async function(next){
     const user = this
     if(user.isModified('password')){
@@ -41,5 +42,13 @@ userSchema.pre('save', async function(next){
     }
     next()
 })
+//login
+userSchema.statics.loginUser = async(email, password)=>{
+    const user = await User.findOne({ email })
+    if(!user) throw new Error('user not found')
+    const isValidPass = await bcrypt.compare(password, user.password)
+    if(!isValidPass) throw new Error('invalid password')
+    return user
+}
 const User = mongoose.model('User', userSchema)
 module.exports=User

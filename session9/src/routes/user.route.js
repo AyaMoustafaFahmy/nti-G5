@@ -21,4 +21,23 @@ router.post('/addUser', async(req,res)=>{
         })
     }
 })
+
+//login user
+router.post('/login', async (req, res)=>{
+    try{
+        const user = await User.loginUser(req.body.email, req.body.password)
+        res.status(200).send({
+            apiStatus:true,
+            data: user,
+            message:'logged in'
+        })
+    }
+    catch(e){
+        res.status(500).send({
+            apiStatus:false,
+            data: e.message,
+            message:'error login '
+        })
+    }
+})
 module.exports = router
