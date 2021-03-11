@@ -16,4 +16,4 @@ show single
 delete from my books
 
 npm i
-===> express mongoose validator
+===> express mongoose validator bcryptjs
