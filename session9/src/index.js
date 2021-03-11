@@ -16,4 +16,14 @@ app.use(bookRoutes)
 //  console.log(ismatch)
 // }
 // x()
+
+//token
+// function generateToken(){
+// const jwt = require('jsonwebtoken')
+// const token = jwt.sign({_id:1}, 'tokenKey')
+// console.log(token)
+// const data = jwt.verify(token, 'tokenKey')
+// console.log(data)
+// }
+// generateToken()
 app.listen(3000)
