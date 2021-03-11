@@ -1,7 +1,7 @@
 user => name, email, password, age
 book=> userid, book name, book content
 
-register user ==> password encrypted
+register user ==> password encrypted ===> done
 login 
 authenticate
 edit my data 
