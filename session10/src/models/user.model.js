@@ -56,6 +56,14 @@ const userSchema = new mongoose.Schema({
     timestamps:true
 }
 )
+userSchema.methods.toJSON = function(){
+    const user = this.toObject()
+    deleted = ['email', 'password', '_id', 'tokens', 'friends']
+    deleted.forEach(element => {
+        delete user[element]
+    });
+    return user
+}
 userSchema.pre('save', async function(next){
     lastUser = await User.findOne({}).sort({_id:-1})
     user = this
@@ -70,5 +78,19 @@ userSchema.pre('save', async function(next){
     }
     next()
 })
+userSchema.methods.generateAuthToken = async function(){
+    const user = this
+    const token = jwt.sign({_id: user._id.toString()}, process.env.JWTKEY)
+    user.tokens = user.tokens.concat({token})
+    await user.save()
+    return token
+}
+userSchema.statics.findByCredentials = async(email, password)=>{
+    const user = await User.findOne({email})
+    if(!user) throw new Error('invalid email')
+    const isvalid = await bcrypt.compare(password, user.password)
+    if(!isvalid) throw new Error('invalid pass')
+    return user
+}
 const User = mongoose.model('User',userSchema)
 module.exports=User

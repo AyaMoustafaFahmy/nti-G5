@@ -51,3 +51,4 @@ npm init --y
 npm i express mongoose validator bcryptjs jsonwebtoken env-cmd multer
 npm i --save-dev nodemon
 npm run dev
+

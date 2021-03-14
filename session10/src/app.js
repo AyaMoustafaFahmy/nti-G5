@@ -1,18 +1,8 @@
 const express = require('express')
 require('./db/mongoose')
+const userRoutes = require('./routes/user.routes')
 const app = express()
-const userModel = require('./models/user')
-x=new userModel({
-    fname:'marwa', 
-    lname:'radwan', 
-    phone:"01234567891",
-    country:'iraq', 
-    password:"123456", 
-    email:"test@test.com",
-    username:"xyz1"
-})
-x.save().then(()=>{}).catch(e=>{console.log(e)})
 app.use(express.json())
-
+app.use(userRoutes)
 module.exports = app
 
