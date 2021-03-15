@@ -51,29 +51,3 @@ npm init --y
 npm i express mongoose validator bcryptjs jsonwebtoken env-cmd multer
 npm i --save-dev nodemon
 npm run dev
-
-
-
-
-user (student, teacher)
-name  age  salary grade type
-            null   1000
-            y657   null
-
-user
-name age id
-teacher
-userid   salary
-student
-userid    grade
-
-
-
-name, age, salary
-name, age, grade
-
-
-
-
-
-

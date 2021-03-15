@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     userId:{type:Number},
     fname:{type:String, required:true, trim:true},
     lname:{type:String, required:true, trim:true},
+    accountStatus:{type:Boolean, default:false},
     phone:{
         type:String,
         trim:true,
@@ -94,6 +95,7 @@ userSchema.methods.generateAuthToken = async function(){
 userSchema.statics.findByCredentials = async(email, password)=>{
     const user = await User.findOne({email})
     if(!user) throw new Error('invalid email')
+    if(!user.accountStatus) throw new Error('please activate your account')
     const isvalid = await bcrypt.compare(password, user.password)
     if(!isvalid) throw new Error('invalid pass')
     return user

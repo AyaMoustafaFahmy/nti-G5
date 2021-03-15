@@ -5,10 +5,23 @@ user=>
     username all characters, 
     password chars and number only from 6 to 20 chars , 
     tokens
+
 task=> 
-title required min 5 chars, 
-details required, 
-start on data , 
-end on data , 
-status boolean default false  , 
-user => from users table
+    title required min 5 chars, 
+    details required, 
+    start on data , 
+    end on data , 
+    status boolean default false  , 
+    user => from users table
+
+create term => name, details ==> students, teachers
+
+
+try{}
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
