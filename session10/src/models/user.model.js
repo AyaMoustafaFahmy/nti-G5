@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const postModel = require('./post.model')
 const userSchema = new mongoose.Schema({
     userId:{type:Number},
     fname:{type:String, required:true, trim:true},
@@ -56,6 +57,11 @@ const userSchema = new mongoose.Schema({
     timestamps:true
 }
 )
+userSchema.virtual('Posts', {
+    ref:'Post',
+    localField:'_id',
+    foreignField:'userId'
+})
 userSchema.methods.toJSON = function(){
     const user = this.toObject()
     deleted = ['email', 'password', '_id', 'tokens', 'friends']
@@ -92,5 +98,10 @@ userSchema.statics.findByCredentials = async(email, password)=>{
     if(!isvalid) throw new Error('invalid pass')
     return user
 }
+userSchema.pre('remove', async function(next){
+    user = this
+    await postModel.deleteMany({userId:user._id})
+    next()
+})
 const User = mongoose.model('User',userSchema)
 module.exports=User
