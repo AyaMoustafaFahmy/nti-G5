@@ -1,6 +1,7 @@
 const express = require('express')
 const router = new express.Router()
 const userModel = require('../models/user.model')
+const auth = require('../middleware/auth')
 // user register
 router.post('/register', async(req, res)=>{
     try{
@@ -63,9 +64,51 @@ router.post('/login',async(req,res)=>{
         })
     }
 })
-// logout
-// logout from all devices
 // show profile
+router.get('/myProfile', auth,async(req,res)=>{
+    res.send(req.user)
+})
+// logout
+router.post('/logout', auth, async(req, res)=>{
+    try{
+        req.user.tokens = req.user.tokens.filter((element)=>{
+            return element!=req.token
+        })
+        await req.user.save()
+        res.status(200).send({
+            apiStatus: false,
+            data:'',
+            message:'logged out'
+        })
+    }
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
+})
+// logout from all devices
+router.post('/logoutAll', auth, async(req, res)=>{
+    try{
+        req.user.tokens = []
+        await req.user.save()
+        res.status(200).send({
+            apiStatus: false,
+            data:'',
+            message:'logged out'
+        })
+    }
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
+})
+
 // edit profile
 // deactivate account
 // remove account
