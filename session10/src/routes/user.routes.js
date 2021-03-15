@@ -108,10 +108,72 @@ router.post('/logoutAll', auth, async(req, res)=>{
         })
     }
 })
-
-// edit profile
 // deactivate account
+router.get('/deactivate',auth, async(req, res)=>{
+    try{
+        req.user.accountStatus= false
+        await user.save()
+        res.status(200).send({
+            apiStatus:true,
+            data: user,
+            message: 'user status updated'
+        })
+    }
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
+})
 // remove account
+router.delete('/me', auth, (req,res)=>{
+    try{
+        await req.user.remove()
+        res.status(200).send({
+            apiStatus:true,
+            data:'deleted',
+            message:"deleted"
+        })
+    }
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
+})
+// reset password
+router.patch('/user/editPassword', auth, async(req,res)=>{  
+try{
+    const pass= req.body.password
+    req.user.password = pass
+   await req.user.save()
+    res.send('done')
+}
+catch(error){
+    res.status(500).send({
+        apiStatus: false,
+        data: error.message,
+        message:'user register error'
+    })
+}
+})
+// edit profile
+router.patch('/user/profile', auth, (req,res)=>{
+    requestedUpdates = Object.keys(req.body)
+    allowed=['name', 'password']
+    isValid = requestedUpdates.every(update=> allowed.includes(update))
+    if(!isValid) return res.send('invalid')
+    try{
+        requestedUpdates.forEach(update=> req.user[update] = req.body[update])
+        await req.user.save()
+        res.send('updated')
+    }
+    catch(e){res.send(e)}
+})
 // add friend
 // remove friends
 // add post
@@ -123,7 +185,6 @@ router.post('/logoutAll', auth, async(req, res)=>{
 // remove like 
 // remove comment
 // show friend profile
-// reset password
 // change email with verfication
 
 module.exports=router
