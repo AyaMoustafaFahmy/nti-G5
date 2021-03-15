@@ -45,6 +45,24 @@ router.get('/activate/:id', async(req, res)=>{
     }
 })
 // user login multiple devices
+router.post('/login',async(req,res)=>{
+    try{
+        const user = await userModel.findByCredentials(req.body.email, req.body.password)
+        const token = await user.generateAuthToken()
+        res.status(200).send({
+            apiStatus:true,
+            data:{user, token},
+            message:"user logged in"
+        })
+    }
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
+})
 // logout
 // logout from all devices
 // show profile
