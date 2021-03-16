@@ -1,7 +1,7 @@
 const fs = require('fs')
 const readFile = function(){
     try{    
-        books = JSON.parse(fs.readFileSync('books.json').toString())
+        books = JSON.parse(fs.readFileSync('books.json'))
     }
     catch(e){
         books = []
@@ -18,6 +18,7 @@ const addNewBook=function(book){
 }
 const showAll = function(){
     books= readFile()
+    console.log(books)
     books.forEach(book => {
         console.log(`book name: ${book.title} and author is ${book.author}`)
     });

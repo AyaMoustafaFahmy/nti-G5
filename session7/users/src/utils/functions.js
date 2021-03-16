@@ -1,12 +1,10 @@
 const {MongoClient, ObjectID} = require('mongodb')
-
 const dbConnection = (callback)=>{
     MongoClient.connect(process.env.dbConnectionURL, {useNewUrlParser:true, useUnifiedTopology:true}, (error, client)=>{
         if(error) return console.log('error in connection')
         const db = client.db(process.env.dbName)
         callback(db)
     })
-
 }
 //add user inside db
 const addUser = (userData) =>{

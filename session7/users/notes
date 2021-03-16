@@ -1,3 +1,10 @@
+npm init
+npm i express hbs env-cmd mongodb
+npm i nodemon --save-dev
+===>    "dev": "env-cmd -f ./config/dev.env nodemon src/app"
+npm run dev
+
+
 users => name, age, address
 form add user to db
 show all users
