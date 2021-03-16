@@ -128,7 +128,7 @@ router.get('/deactivate',auth, async(req, res)=>{
     }
 })
 // remove account
-router.delete('/me', auth, (req,res)=>{
+router.delete('/me', auth, async(req,res)=>{
     try{
         await req.user.remove()
         res.status(200).send({
@@ -162,7 +162,7 @@ catch(error){
 }
 })
 // edit profile
-router.patch('/user/profile', auth, (req,res)=>{
+router.patch('/user/profile', auth, async(req,res)=>{
     requestedUpdates = Object.keys(req.body)
     allowed=['name', 'password']
     isValid = requestedUpdates.every(update=> allowed.includes(update))
@@ -175,16 +175,45 @@ router.patch('/user/profile', auth, (req,res)=>{
     catch(e){res.send(e)}
 })
 // add friend
+router.post('/addFriend', auth, async(req, res)=>{
+    try{
+        const fId = req.body.fId
+        const friend = await userModel.findOne({_id: fId})
+        if(!friend) throw new Error('invalid friend id')
+        req.user.friends = req.user.friend.push(fId)
+        await req.user.save()
+        res.send('added')
+    }
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
+})
 // remove friends
-// add post
-// share friend post
-// remove his post
-// edit his post
-// like post
-// comment on post
-// remove like 
-// remove comment
-// show friend profile
+router.post('/removeFriend',auth, async(req,res)=>{
+try{
+    req.user.friends = req.user.friends.filter((element)=>{
+        return element!=req.body.fId
+    })
+    await req.user.save()
+    res.status(200).send({
+        apiStatus: false,
+        data:'',
+        message:'logged out'
+    })
+}
+catch(error){
+    res.status(500).send({
+        apiStatus: false,
+        data: error.message,
+        message:'user register error'
+    })
+}
+})
+
 // change email with verfication
 
 module.exports=router

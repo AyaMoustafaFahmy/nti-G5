@@ -25,3 +25,22 @@ try{}
             message:'user register error'
         })
     }
+
+
+
+0-9  10-19  20-29  30-39  40-49
+/posts?limit=10&page=3
+......?
+......?content=aa
+
+sortBy=_id:desc
+_id:desc
+req.query.sortBy.split(':')  => part = ["_id", "desc"]
+sort._id : -1
+sort[part[0]] = part[1]=='desc'? -1:1
+{_id:1}
+
+
+
+
+
