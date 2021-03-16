@@ -2,6 +2,7 @@ const express=require('express')
 const router = new express.Router()
 const postModel = require('../models/post.model')
 const auth = require('../middleware/auth')
+const multer = require('multer')
 // add post
 router.post('/addPost', auth, async(req,res)=>{
     try{
@@ -53,12 +54,73 @@ router.get('/posts',auth, async(req,res)=>{
         })
     }
 })
-// share friend post
+//get my single post
+router.get('/post/:id', auth, async(req,res)=>{
+    try{
+        const _id = req.params.id
+        const post = await postModel.findOne({ _id , userId: req.user._id})
+        if(!post) throw new Error('invalid post id')
+        res.send(post)
+    }
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
+}) 
 // remove his post
+router.delete('/post/:id', auth, async(req,res)=>{
+    try{
+        const _id = req.params.id
+        const post = await postModel.findOneAndRemove(
+            {   
+                _id , 
+                userId: req.user._id
+            })
+        if(!post) throw new Error('invalid post id')
+        res.send("deleted")
+    }
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
+
+})
 // edit his post
+router.patch('/post/:id', auth, async(req,res)=>{
+    try{
+        const _id = req.params.id
+        const post = await postModel.findOne({ _id , userId: req.user._id})
+// postModel.findOneAndUpdate(
+//     {_id, userId:req.user._id}, 
+//     {$set:{content:req.body.content}})
+        if(!post) throw new Error('invalid post id')
+        if(req.body.content) {
+            post.content = req.body.content
+            await post.save()
+        }
+        else throw new Error('no content added')
+        res.send(post)
+    }
+    catch(error){
+        res.status(500).send({
+            apiStatus: false,
+            data: error.message,
+            message:'user register error'
+        })
+    }
+
+})
 // like post
+
 // comment on post
 // remove like 
 // remove comment
 // show friend profile
+// share friend post
 module.exports = router

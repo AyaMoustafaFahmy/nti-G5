@@ -2,13 +2,34 @@ const express = require('express')
 const router = new express.Router()
 const userModel = require('../models/user.model')
 const auth = require('../middleware/auth')
+const fs = require('fs')
+const multer = require('multer')
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // user register
 router.post('/register', async(req, res)=>{
     try{
         const user = new userModel(req.body)
         await user.save()
         //send email with activate route
+        // msgBody = `welcome to activate account /activate/${user._id}`
+        // const msg = {
+        //   to: user.email, //user email
+        //   from: 'marwa@project.com', //your email
+        //   subject: 'Welcome mail',
+        //   html: msgBody
+        // };
+        // //ES6
+        // sgMail.send(msg)
+        //   .then(() => {}, error => {
+        //     console.error(error);
         
+        //     if (error.response) {
+        //       console.error(error.response.body)
+        //     }
+        //   });
+    
+
         res.status(200).send({
             apiStatus: true,
             data: user,
@@ -216,4 +237,27 @@ catch(error){
 
 // change email with verfication
 
+var upload = multer({ dest: 'images/profile' })
+router.post('/profile', auth, upload.single('avatar'), async  (req, res)=> {
+    filename=req.file.destination+ '/' + req.file.filename 
+    fileWithExt = filename+'.'+ (req.file.originalname.split('.').pop())
+    fs.rename(filename, fileWithExt, function(err) {
+        if ( err ) console.log('ERROR: ' + err);
+    });
+    req.user.userProfile= fileWithExt
+    await req.user.save()
+    res.send(req.user)
+})
+imgName=''
+let storage = multer.diskStorage({
+    destination:function(req,res,cb){cb(null, 'images')},
+    filename:function(req,file,cb){
+        imgName = Date.now()+'.'+file.originalname.split('.').pop()
+        cb(null, imgName)
+    }
+})
+var upload1 = multer({storage:storage})
+router.post('/upload', auth, upload1.single('img'), async(req,res)=>{
+    res.send({name:'images/'+imgName})
+})
 module.exports=router
