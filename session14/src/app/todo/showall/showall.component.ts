@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./showall.component.css']
 })
 export class ShowallComponent implements OnInit {
-  data = JSON.parse(localStorage.getItem('tasks'))
+  monthNo=1
+  months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul','aug', 'sep','oct','nov','sep']
   constructor() { }
 
   ngOnInit(): void {

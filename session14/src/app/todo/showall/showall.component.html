@@ -1,8 +1,7 @@
-<section class="container">
-    <div class="row">
-        <div class="col-4" *ngFor="let task of data">
-            <h3>{{task.title}}</h3>
-            <p>{{task.content}}</p>
-        </div>
-    </div>
-</section>
+<input [(ngModel)]="monthNo">
+<div [ngSwitch]='monthNo'>
+    <ng-template *ngFor="let m of months;let i = index">
+        <div *ngSwitchCase="'{{i+1}}'">{{m}}</div>
+    </ng-template>
+    <div *ngSwitchDefault>error</div>
+</div>

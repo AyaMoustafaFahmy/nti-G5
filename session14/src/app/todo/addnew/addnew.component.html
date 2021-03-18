@@ -4,8 +4,11 @@
     <div class="btn btn-success my-2" (click)="addTask()">add task</div>
 </section>
 <section class="container">
+    <input placeholder="seach key" (input)='filterData()' [(ngModel)]="serKey">
+</section>
+<section class="container">
     <div class="row">
-        <div class="col-4" *ngFor="let task of tasks; let i=index">
+        <div class="col-4" *ngFor="let task of filteredtasks; let i=index">
             <h3>{{task.title}}</h3>
             <p>{{task.content}}</p>
             <button (click)="delItem(i)">delete</button>
