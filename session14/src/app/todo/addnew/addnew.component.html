@@ -1,0 +1,14 @@
+<section class="container my-5 border border-3 border-success rounded">
+    <input [(ngModel)]="task.title" placeholder="task title" class="form-control my-3">
+    <input [(ngModel)]="task.content" placeholder="task content" class="form-control my-3">
+    <div class="btn btn-success my-2" (click)="addTask()">add task</div>
+</section>
+<section class="container">
+    <div class="row">
+        <div class="col-4" *ngFor="let task of tasks; let i=index">
+            <h3>{{task.title}}</h3>
+            <p>{{task.content}}</p>
+            <button (click)="delItem(i)">delete</button>
+        </div>
+    </div>
+</section>

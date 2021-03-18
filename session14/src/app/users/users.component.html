@@ -1,0 +1,67 @@
+<!-- <section class="container my-5" >
+    <div class="table-responsive">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+        <th [attr.rowspan]='3'>id</th>
+        <th [attr.rowspan]='3'>name</th>
+        <th [attr.rowspan]='3'>username</th>
+        <th [attr.rowspan]='3'>email</th>
+        <th [attr.colspan]="6">address</th>
+        <th [attr.rowspan]='3'>phone</th>
+        <th [attr.rowspan]='3'>website</th>
+        <th [attr.colspan]='3'>company</th>
+    </tr>
+    <tr>
+        <th [attr.rowspan]='2'>street</th>
+        <th [attr.rowspan]='2'>suite</th>
+        <th [attr.rowspan]='2'>city</th>
+        <th [attr.rowspan]='2'>zipcode</th>
+        <th [attr.colspan]='2'>geo</th>
+        <th [attr.rowspan]='2'>name</th>
+        <th [attr.rowspan]='2'>catchPhrase</th>
+        <th [attr.rowspan]='2'>bs</th>
+    </tr>
+    <tr>
+        <th>lat</th>
+        <th>lng</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.address.street}}</td>
+            <td>{{user.address.suite}}</td>
+            <td>{{user.address.city}}</td>
+            <td>{{user.address.zipcode}}</td>
+            <td>{{user.address.geo.lat}}</td>
+            <td>{{user.address.geo.lng}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.website}}</td>
+            <td>{{user.company.name}}</td>
+            <td>{{user.company.catchPhrase}}</td>
+            <td>{{user.company.bs}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</section> -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4" *ngFor="let student of studentsData">
+            <h3>{{student.name}}</h3>
+            <ul>
+                <li *ngFor="let s of student.grades">
+                    {{s.subject}} => {{s.grade}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
