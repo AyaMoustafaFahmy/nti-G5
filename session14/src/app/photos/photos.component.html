@@ -1,0 +1,24 @@
+<section class="mt-4 container">
+    <h2 class="text-center">My Photos</h2>
+    <table class="table table-stripped">
+        <thead>
+            <th>index</th>
+            <th>title</th>
+            <th>thmbinal</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="
+            let img of images; 
+            let i = index; 
+            let e = even; 
+            let o = odd
+            "
+            [ngClass]="{odd: o, even:e}"
+            >
+                <td>{{i+1}}</td>
+                <td><img [src]="img.thumbnailUrl"></td>
+                <td>{{img.title}}</td>
+            </tr>
+        </tbody>
+    </table>
+            </section>
