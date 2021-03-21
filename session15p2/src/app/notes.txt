@@ -1,0 +1,6 @@
+application 
+
+home => nav, slider, about us, form, footer
+about us 
+services => api
+contact us 

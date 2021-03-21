@@ -3,10 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ServicesComponent } from './pages/services/services.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { SliderComponent } from './shared/slider/slider.component';
+import { AboutsectionComponent } from './shared/aboutsection/aboutsection.component';
+import { ContactformComponent } from './shared/contactform/contactform.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    ServicesComponent,
+    ContactComponent,
+    NavComponent,
+    SliderComponent,
+    AboutsectionComponent,
+    ContactformComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
