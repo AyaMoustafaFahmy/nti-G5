@@ -7,11 +7,12 @@ class User{
     }
     
 }
-let marwa = new User()
-marwa.name="marwa"
-marwa.age=36
+// let marwa = new User()
+// marwa.name="marwa"
+// marwa.age=36
 
-
+let marwa:User 
+marwa.name = 'dhbsh'
 
 //overloading
 //override

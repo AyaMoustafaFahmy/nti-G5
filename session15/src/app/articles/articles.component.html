@@ -1,0 +1,9 @@
+<button (click)="showData()">show</button>
+<div *ngFor="let d of data">
+    <li>{{d}}</li>
+</div>
+
+
+<div *ngFor="let art of articles">
+    <app-singleart [art]=art ></app-singleart>
+</div>
