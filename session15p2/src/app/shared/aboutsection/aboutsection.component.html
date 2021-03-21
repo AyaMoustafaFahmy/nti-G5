@@ -1,1 +1,9 @@
-<p>aboutsection works!</p>
+<section class="container mx-5">
+    <h2 class="text-center">{{data.title| uppercase}}</h2>
+    <div class="row">
+        <div class="col-8 p-3 h5">{{data.details}}</div>
+        <div class="col-4">
+            <img [src]="data.img" class="img-fluid">
+        </div>
+    </div>
+</section>

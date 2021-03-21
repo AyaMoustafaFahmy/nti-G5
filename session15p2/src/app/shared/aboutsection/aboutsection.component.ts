@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-aboutsection',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aboutsection.component.css']
 })
 export class AboutsectionComponent implements OnInit {
-
-  constructor() { }
+  data:any = null
+  constructor( private _dataService:DataService) {
+this.data = _dataService.getAboutData()
+   }
 
   ngOnInit(): void {
   }

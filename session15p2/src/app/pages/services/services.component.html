@@ -1,1 +1,15 @@
 <p>services works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>title</th>
+            <th>body</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ele of todos">
+            <td>{{ele.title}}</td>
+            <td>{{ele.body}}</td>
+        </tr>
+    </tbody>
+</table>
