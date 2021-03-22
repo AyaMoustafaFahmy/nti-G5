@@ -4,8 +4,8 @@ const userModel = require('../models/user.model')
 const auth = require('../middleware/auth')
 const fs = require('fs')
 const multer = require('multer')
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// const sgMail = require('@sendgrid/mail');
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // user register
 router.post('/register', async(req, res)=>{
     try{

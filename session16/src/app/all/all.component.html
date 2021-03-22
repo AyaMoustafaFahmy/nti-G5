@@ -1,0 +1,8 @@
+<h2>All Images</h2>
+<div class="row" *ngIf="!isLoaded">  Loading.. </div>
+<div class="row">
+    <div class="col-2" *ngFor="let img of data">
+        <img [src]="img.url" style="width:100%">
+    </div>
+</div>
+<h2>end of images</h2>
