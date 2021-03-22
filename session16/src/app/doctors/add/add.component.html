@@ -1,0 +1,27 @@
+<section>
+    <h2>Add New Doctor</h2>
+    {{doctorData|json}}
+    {{doctor.valid}}
+    <form #doctor="ngForm" (ngSubmit)="addDoctor(doctor)">
+        <label>Doctor Name</label><br>
+        <input name="dName" [(ngModel)]='doctorData.name' 
+        #dName='ngModel'
+        required  minlength="10" email maxlength="15"><br>
+        <div *ngIf="dName.invalid">invalid</div>
+        <div *ngIf="dName?.errors?.required && dName.dirty">
+            required
+        </div>
+        <div *ngIf="dName?.errors?.minlength && dName.dirty">
+            min length
+        </div>
+        <label>Doctor Spcilaze</label><br>
+        <input name="dSpcialize" [(ngModel)]="doctorData.spicialize"><br>
+        <label>Doctor city</label><br>
+        <input name="dCity" [(ngModel)]="doctorData.address.city" ><br>
+        <label>Doctor street</label><br>
+        <input name="dStreet" [(ngModel)]="doctorData.address.streetName"><br>
+        <label>Doctor bno</label><br>
+        <input name="dBNo" [(ngModel)]="doctorData.address.bNo"><br>
+        <button>Add New Doctor</button>
+    </form>
+</section>

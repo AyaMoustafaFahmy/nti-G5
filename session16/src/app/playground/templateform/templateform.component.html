@@ -1,0 +1,19 @@
+{{myForm.value|json}}
+
+<form #myForm="ngForm" (ngSubmit)="onAdd(myForm)">
+    <input placeholder="name" name="name" #name="ngModel" ngModel>
+    <input placeholder="age" name="age" ngModel>
+    <input placeholder="job" name="job" ngModel>
+    <button type="submit">add</button>
+</form>
+<ol>
+    <li>{{name.touched}}</li>
+    <li>{{name.dirty}}</li>
+</ol>
+    <ul>
+        <li>{{myForm.value.name}}</li>
+        <li>{{myForm.touched}}</li>
+        <li>{{myForm.valid}}</li>
+        <li>{{myForm.invalid}}</li>
+        <li>{{myForm.submitted}}</li>
+    </ul>

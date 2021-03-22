@@ -1,0 +1,9 @@
+doctor registeration
+    -name
+    -spicialize
+    - address
+        - city
+        - street name
+        - bNo
+
+{name:'', apicialize:'', adress:{city:'', street:'',bNo:''}}
