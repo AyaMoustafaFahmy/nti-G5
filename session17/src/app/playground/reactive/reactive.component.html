@@ -1,0 +1,21 @@
+<section class="container my-5">
+    <form class="form-group" [formGroup]="userForm" (ngSubmit)="submitData()">
+        {{userForm.valid}}
+        <input placeholder="name" class="form-control" 
+        formControlName="name">
+<div *ngIf="name.invalid && (name.touched||name.dirty)" class="alert alert-danger">
+    <div *ngIf="name?.errors?.required">name is required</div>
+    <div *ngIf="name?.errors?.minlength">min len 15</div>
+    
+</div>
+
+        <input placeholder="age" class="form-control" formControlName="age">
+        <input placeholder="email" class="form-control" formControlName="email">
+        <div formGroupName="address">
+            <input placeholder="country" class="form-control" formControlName="country">
+            <input placeholder="street" class="form-control" formControlName="street">
+            <input placeholder="bNo" class="form-control" formControlName="bNo">            
+        </div>
+        <button class="btn btn-primary">submit</button>
+    </form>
+</section>
