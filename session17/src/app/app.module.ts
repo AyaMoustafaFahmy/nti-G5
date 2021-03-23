@@ -7,6 +7,7 @@ import { ReactiveComponent } from './playground/reactive/reactive.component';
 import { Err404Component } from './err404/err404.component';
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
+import { RegisterationComponent } from './pages/user/registeration/registeration.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { Test2Component } from './test2/test2.component';
     ReactiveComponent,
     Err404Component,
     Test1Component,
-    Test2Component
+    Test2Component,
+    RegisterationComponent
   ],
   imports: [
     BrowserModule,

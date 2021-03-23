@@ -1,0 +1,12 @@
+name 
+email 
+password 
+role 
+address 
+phone 
+name_ar 
+address_ar 
+price 
+gender 
+governorate 
+city

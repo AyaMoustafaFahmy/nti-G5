@@ -1,0 +1,22 @@
+<section class="container my-3">
+    <div  [ngClass]="{'alert':true, 'alert-danger':!status, 'alert-success':status}">
+        {{msg}}
+    </div>
+    <form class="form-control" [formGroup]="userForm" (ngSubmit)="registerPaitent()">
+        <input placeholder="name" formControlName="name" class="form-control">
+        <input placeholder="name arabic" formControlName="name_ar" class="form-control">
+        <input placeholder="email" formControlName="email" class="form-control">
+        <input placeholder="password" formControlName="password" class="form-control">
+        <input placeholder="address eng" formControlName="address" class="form-control">
+        <input placeholder="address arabic" formControlName="address_ar" class="form-control">
+        <input placeholder="phone" formControlName="phone" class="form-control">
+        <input placeholder="governorate" formControlName="governorate" class="form-control">
+        <input placeholder="city" formControlName="city" class="form-control">
+        <p>
+            Gender: 
+        <input type="radio" formControlName="gender" value="0"> Male
+        <input type="radio" formControlName="gender" value="1"> Female
+        </p>
+        <button class="btn btn-primary">register</button>
+    </form>
+</section>
