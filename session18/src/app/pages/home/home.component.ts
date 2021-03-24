@@ -8,14 +8,17 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit {
 userData :any=null
-  constructor(private _userService:UserService) {
+  constructor(public _userService:UserService) {
 
    }
 
   ngOnInit(): void {
-    this._userService.profile().subscribe(res=>{
-      this.userData= res
-    })
+    if(this._userService.userStatus){
+      this._userService.profile().subscribe(res=>{
+        this.userData= res
+      })
+  
+    }
   }
 
 }

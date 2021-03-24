@@ -5,12 +5,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  public userStatus=false
   commonApiUrl = "http://localhost:3000"
   constructor(private _http: HttpClient) { }
+
   loginUser(userLoginData: any):Observable<any>{
     return this._http.post(`${this.commonApiUrl}/login`, userLoginData)
   }
+  
   profile():Observable<any>{
     return this._http.get(`${this.commonApiUrl}/myProfile`)
   }
+
 }

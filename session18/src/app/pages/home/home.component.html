@@ -1,3 +1,4 @@
-<section class="container my-3">
-    {{userData|json}}
-</section>
+<app-newsfeed *ngIf="_userService.userStatus; else login"></app-newsfeed>
+<ng-template #login>
+    <app-login></app-login>
+</ng-template>

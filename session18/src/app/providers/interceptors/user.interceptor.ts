@@ -6,15 +6,17 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Injectable()
 export class UserInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private _userService:UserService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler){
     let token = localStorage.getItem('token')
     if(token){
+      this._userService.userStatus=true
       request = request.clone(
         {
           headers: request.headers.set(
