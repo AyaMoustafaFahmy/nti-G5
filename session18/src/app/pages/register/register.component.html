@@ -1,8 +1,10 @@
 <section class="container my-4">
+    <div class="">
+        <h2 class="text-center py-3">Register User</h2>
+    </div>
     <div *ngIf="msg!=''" class="alert alert-danger">{{msg}}</div>
-    <form  #user="ngForm" class="form-group" (ngSubmit)="registerUser(user)">
-
-        <input class="form-control m-1" placeholder="fname" 
+    <form  #user="ngForm" class="form-group my-3" (ngSubmit)="registerUser(user)">
+        <input class="form-control my-3" placeholder="fname" 
         [(ngModel)]="userData.fname" 
         #fname="ngModel" 
         required minlength="3" name="fname"
@@ -15,22 +17,22 @@
             <div *ngIf="fname?.errors?.minlength">first name must be more than 3 chars</div>
         </div>
 
-        <input class="form-control m-1" placeholder="lname" [(ngModel)]="userData.lname" #lname="ngModel"  name="lname">
+        <input class="form-control my-3" placeholder="lname" [(ngModel)]="userData.lname" #lname="ngModel"  name="lname">
 
-        <input class="form-control m-1" placeholder="phone" [(ngModel)]="userData.phone" #phone="ngModel"  name="phone">
+        <input class="form-control my-3" placeholder="phone" [(ngModel)]="userData.phone" #phone="ngModel"  name="phone">
 
-        <input class="form-control m-1" placeholder="country" [(ngModel)]="userData.country" #country="ngModel"  name="country">
-        <input class="form-control m-1" placeholder="birthdate" [(ngModel)]="userData.birthdate" #birthdate="ngModel"  name="birthdate">
+        <input class="form-control my-3" placeholder="country" [(ngModel)]="userData.country" #country="ngModel"  name="country">
+        <input class="form-control my-3" placeholder="birthdate" [(ngModel)]="userData.birthdate" #birthdate="ngModel"  name="birthdate">
 
-        <input class="form-control m-1" placeholder="password" [(ngModel)]="userData.password" #password="ngModel"  name="password">
+        <input class="form-control my-3" placeholder="password" [(ngModel)]="userData.password" #password="ngModel"  name="password">
 
-        <input class="form-control m-1" placeholder="email" [(ngModel)]="userData.email" #email="ngModel"  name="email">
+        <input class="form-control my-3" placeholder="email" [(ngModel)]="userData.email" #email="ngModel"  name="email">
 
-        <input class="form-control m-1" placeholder="username" [(ngModel)]="userData.username" #username="ngModel"  name="username">
+        <input class="form-control my-3" placeholder="username" [(ngModel)]="userData.username" #username="ngModel"  name="username">
 
-        <input class="form-control m-1" placeholder="addrType" [(ngModel)]="userData.addresses.address.addrType" #addrType="ngModel"  name="addrType">
+        <input class="form-control my-3" placeholder="addrType" [(ngModel)]="userData.addresses.address.addrType" #addrType="ngModel"  name="addrType">
         
-        <input class="form-control m-1" placeholder="addrDetails" [(ngModel)]="userData.addresses.address.addrDetails" #addrDetails="ngModel"  name="addrDetails">
+        <input class="form-control my-3" placeholder="addrDetails" [(ngModel)]="userData.addresses.address.addrDetails" #addrDetails="ngModel"  name="addrDetails">
         
         <button class="btn btn-success">Add User</button>
     </form>

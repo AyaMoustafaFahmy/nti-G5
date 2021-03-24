@@ -1,0 +1,30 @@
+<section class="container my-4">
+    <h2 class="text-center">Login</h2>
+    <div *ngIf="msg!=''" class="alert alert-danger">{{msg}}</div>
+    <form [formGroup]="loginUser" (ngSubmit)="logMe()">
+        <input placeholder="email" formControlName="email"
+        [ngClass]="{'form-control':true,'my-3':true, 'border':true, 'border-danger':(email.invalid && (email.touched||email.dirty))||(email.invalid && isSubmitted)}">
+        <div *ngIf="(email.invalid && (email.touched||email.dirty))||(email.invalid && isSubmitted)" class="alert alert-danger">
+            <div *ngIf="email?.errors?.required">
+                please add your email
+            </div>
+            <div *ngIf="email?.errors?.email">
+                invalid Email Format
+            </div>
+        </div>
+        <input placeholder="password" type="password" formControlName="password" [ngClass]="{'form-control':true,'my-3':true, 'border':true, 'border-danger':(password.invalid && (password.touched||password.dirty))||(password.invalid && isSubmitted)}">
+        <div *ngIf="(password.invalid && (password.touched||password.dirty))||(password.invalid && isSubmitted)" class="alert alert-danger">
+            <div *ngIf="password?.errors?.required">
+                please add your password
+            </div>
+            <div *ngIf="password?.errors?.minlength">
+                invalid must be more than 6 chars
+            </div>
+            
+            <div *ngIf="password?.errors?.maxlength">
+                invalid must be less than 20 chars
+            </div>
+        </div>
+        <button class="btn btn-primary">login</button>
+    </form>
+</section>
