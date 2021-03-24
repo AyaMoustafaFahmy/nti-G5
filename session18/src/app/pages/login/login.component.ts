@@ -26,10 +26,14 @@ export class LoginComponent implements OnInit {
     if(this.loginUser.valid){
       this._userService.loginUser(this.loginUser.value).subscribe(response=>{
         console.log(response)
+        let token = 'Bearer ' + response.data.token
+        console.log(token) 
+        localStorage.setItem('token', token)
       },
       (error)=>{
         // console.log(error.error)
         this.msg= error.error.data
+        
       },
       ()=>{
         //this._router.navigate([''])

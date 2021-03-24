@@ -10,4 +10,7 @@ export class UserService {
   loginUser(userLoginData: any):Observable<any>{
     return this._http.post(`${this.commonApiUrl}/login`, userLoginData)
   }
+  profile():Observable<any>{
+    return this._http.get(`${this.commonApiUrl}/myProfile`)
+  }
 }
