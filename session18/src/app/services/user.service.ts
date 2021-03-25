@@ -14,13 +14,15 @@ export class UserService {
   registerUser(userData:any):Observable<any>{
     return this._http.post(`${this.commonApiUrl}/register`,userData)
   }
+  
   loginUser(userLoginData: any):Observable<any>{
     return this._http.post(`${this.commonApiUrl}/login`, userLoginData)
   }
-  
+
   activateUser(id):Observable<any>{
     return this._http.get(`${this.commonApiUrl}/activate/${id}`)
   }
+  
   profile():Observable<any>{
     return this._http.get(`${this.commonApiUrl}/myProfile`)
   }

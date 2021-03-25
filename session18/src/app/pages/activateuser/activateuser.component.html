@@ -1,1 +1,11 @@
-<p>activateuser works!</p>
+<section class="container my-5">
+    <h3 class="text-center" *ngIf="!status; else active">To Activate your account
+         <span class="btn btn-primary" (click)="activate()">click here </span>
+   </h3>
+   <ng-template #active>
+    <h3 class="text-center" >your account active now
+        <span class="btn btn-primary" routerLink="" >home </span>
+  </h3>
+   </ng-template>
+        
+</section>
