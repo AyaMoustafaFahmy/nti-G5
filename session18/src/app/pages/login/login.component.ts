@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
         let token = 'Bearer ' + response.data.token
         console.log(token) 
         localStorage.setItem('token', token)
+        localStorage.setItem('userStatus','true')
+        this._userService.userStatus=true
       },
       (error)=>{
         // console.log(error.error)

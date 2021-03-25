@@ -19,6 +19,9 @@ export class UserService {
     return this._http.post(`${this.commonApiUrl}/login`, userLoginData)
   }
 
+  logoutUser():Observable<any>{
+    return this._http.post(`${this.commonApiUrl}/logout`, null)
+  }
   activateUser(id):Observable<any>{
     return this._http.get(`${this.commonApiUrl}/activate/${id}`)
   }
