@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserInterceptor } from './providers/interceptors/user.interceptor';
 import { NewsfeedComponent } from './pages/newsfeed/newsfeed.component';
+import { ActivateuserComponent } from './pages/activateuser/activateuser.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NewsfeedComponent } from './pages/newsfeed/newsfeed.component';
     FooterComponent,
     LoginComponent,
     HomeComponent,
-    NewsfeedComponent
+    NewsfeedComponent,
+    ActivateuserComponent
   ],
   imports: [
     BrowserModule,

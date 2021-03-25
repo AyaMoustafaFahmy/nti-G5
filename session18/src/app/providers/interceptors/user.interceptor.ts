@@ -17,6 +17,7 @@ export class UserInterceptor implements HttpInterceptor {
     let token = localStorage.getItem('token')
     if(token){
       this._userService.userStatus=true
+      localStorage.setItem('userStatus', 'true')
       request = request.clone(
         {
           headers: request.headers.set(

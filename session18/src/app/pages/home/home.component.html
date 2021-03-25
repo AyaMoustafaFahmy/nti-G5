@@ -1,3 +1,4 @@
+{{_userService.userStatus}}
 <app-newsfeed *ngIf="_userService.userStatus; else login"></app-newsfeed>
 <ng-template #login>
     <app-login></app-login>
