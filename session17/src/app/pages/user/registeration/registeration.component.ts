@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RegisterationComponent implements OnInit {
   msg:string= ''
   status:boolean = false
+  isSubmitted = false
   userForm = new FormGroup({
     name :new FormControl('', [Validators.required, Validators.minLength(3)]),
     email :new FormControl('',[Validators.email]),
@@ -29,6 +30,7 @@ export class RegisterationComponent implements OnInit {
   }
 
   registerPaitent(){
+    this.isSubmitted=true
     if(this.userForm.valid){
       this.msg ="user added successfuly"
       this.status=true

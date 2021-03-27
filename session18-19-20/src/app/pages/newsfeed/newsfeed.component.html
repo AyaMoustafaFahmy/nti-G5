@@ -1,0 +1,21 @@
+<form #d="ngForm" (ngSubmit)="addPost(d)">
+    <input [(ngModel)]="newPost.content" name="content">
+    <button>add</button>
+</form>
+
+<section class="container">
+    <div *ngIf="posts.length==0">no posts</div>
+    <div *ngFor="let p of posts" class="row border border-2 border-primary rounded m-2 p-3">
+        <p>{{p.content}}</p>
+        <p>
+            <span class="m-2">{{p.numOfLikes}} <i class="fas fa-thumbs-up"></i></span>
+            <span class="m-2">{{p.numOfShares}} <i class="fas fa-share"></i></span>
+        <span class="m-2" (click)="changeCommentsFlag()">{{p?.comments.length}} <i class="fas fa-comment-alt"></i></span>
+        </p>
+        <div *ngIf="commentsFlag">
+            <p class="border border-2 bg-light" *ngFor="let c of p.comments">
+                {{c}}
+            </p>
+        </div>
+        </div>
+</section>

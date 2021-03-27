@@ -1,5 +1,5 @@
 <section class="container my-3">
-    <div  [ngClass]="{'alert':true, 'alert-danger':!status, 'alert-success':status}">
+    <div *ngIf="isSubmitted" [ngClass]="{'alert':true, 'alert-danger':!status, 'alert-success':status}">
         {{msg}}
     </div>
     <form class="form-control" [formGroup]="userForm" (ngSubmit)="registerPaitent()">

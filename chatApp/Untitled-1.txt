@@ -1,0 +1,11 @@
+login marwa => friends +> mahmoud
+conversiations => conId =>5
+login mahmoud =>conId
+
+conversiations
+_id,
+user_id,
+secUser_id,
+chats:[msg:{ message, time, user1Flag, user2Flag }]
+
+/create chats ana htklm m3 men

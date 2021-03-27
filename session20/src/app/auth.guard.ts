@@ -11,7 +11,6 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
-
       if(this._global.userStatus){
         alert('gurad cann\'t access')
         this._router.navigateByUrl('')

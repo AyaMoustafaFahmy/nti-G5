@@ -65,7 +65,7 @@ userSchema.virtual('Posts', {
 })
 userSchema.methods.toJSON = function(){
     const user = this.toObject()
-    deleted = ['email', 'password', '_id', 'tokens', 'friends']
+    deleted = ['email', 'password', 'tokens', 'friends']
     deleted.forEach(element => {
         delete user[element]
     });

@@ -4,6 +4,7 @@ const userModel = require('../models/user.model')
 const auth = require('../middleware/auth')
 const fs = require('fs')
 const multer = require('multer')
+const adminAuth = require('../middleware/adminAuth')
 // const sgMail = require('@sendgrid/mail');
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // user register
@@ -86,7 +87,7 @@ router.post('/login',async(req,res)=>{
     }
 })
 // show profile
-router.get('/myProfile', auth,async(req,res)=>{
+router.get('/ ', auth,async(req,res)=>{
     res.send(req.user)
 })
 // logout
@@ -97,7 +98,7 @@ router.post('/logout', auth, async(req, res)=>{
         })
         await req.user.save()
         res.status(200).send({
-            apiStatus: false,
+            apiStatus: true,
             data:'',
             message:'logged out'
         })
@@ -259,5 +260,9 @@ let storage = multer.diskStorage({
 var upload1 = multer({storage:storage})
 router.post('/upload', auth, upload1.single('img'), async(req,res)=>{
     res.send({name:'images/'+imgName})
+})
+
+router.get('/test', adminAuth, (req,res)=>{
+    
 })
 module.exports=router
