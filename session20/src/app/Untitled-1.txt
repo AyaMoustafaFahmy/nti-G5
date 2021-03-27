@@ -1,0 +1,27 @@
+admin dashbord => admin.mydomain.com
+show
+
+user site =>mydomain.com 
+show
+
+
+mydomain.com
+admin => access
+not admin => redirect
+
+
+backend
+middleware => auth.js => find user email, pass , token =>
+              adminAuth.js => email, pass, type=admin, token =>auth
+
+
+cors => cross orgin communication required =>
+3000 <=> 4200
+node => npm i cors 
+app.js ==> cors = require('cors)
+before routes
+app.use(cors())
+
+
+route
+remove =>  /post/:id
